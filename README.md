@@ -1,48 +1,74 @@
-# چت‌بات هوشمند (متصل به OpenAI API)
+<div align="center">
 
-یک چت‌بات کامل، تک‌فایلی و بدون نیاز به نصب که مستقیم داخل مرورگر اجرا می‌شود و از API خودِ OpenAI استفاده می‌کند.
+<img src="./assets/banner.svg" alt="Chat Bot" width="100%" />
 
-## قابلیت‌ها
-- 💬 گفتگوی متنی با استریم پاسخ (مثل ChatGPT)
-- 🖼️ تولید تصویر با DALL·E / gpt-image (حالت "تولید تصویر" در بالای صفحه)
-- 📎 آپلود فایل (متنی: txt/md/json/csv/js/py/... و تصویر برای مدل‌های vision)
-- 🗂️ چند گفتگوی جداگانه با تاریخچه (مثل سایدبار ChatGPT)
-- 🧠 حافظه/تاریخچه کامل: همه‌چیز در `localStorage` مرورگر شما ذخیره می‌شود و بعد از بستن مرورگر هم می‌ماند
-- ⚙️ تنظیم آزادانه‌ی مدل گفتگو، مدل تصویر، و System Prompt
-- 💾 خروجی/ورودی پشتیبان (Export/Import) به‌صورت فایل JSON
+</div>
 
-## نحوه‌ی استفاده
-1. فایل‌ها را از حالت زیپ خارج کنید.
-2. فایل `index.html` را با یک مرورگر مدرن (Chrome / Edge / Firefox) باز کنید.
-   - می‌توانید مستقیم دابل‌کلیک کنید، یا برای جلوگیری از هر مشکل احتمالی مرورگر، با یک سرور محلی ساده اجرا کنید:
-     ```
-     cd gpt-chat
-     python3 -m http.server 8000
-     ```
-     و بعد آدرس `http://localhost:8000` را باز کنید.
-3. روی دکمه‌ی «⚙️ تنظیمات API» بزنید و کلید API خودتان (`sk-...`) را وارد کنید.
-4. نام مدل مورد نظر را وارد کنید (مثلاً `gpt-4o-mini` برای گفتگو و `dall-e-3` برای تصویر).
-5. ذخیره کنید و شروع به چت کنید!
+# Chat Bot
 
-## نکته‌ی امنیتی مهم
-کلید API شما فقط داخل مرورگر خودتان (`localStorage`) ذخیره می‌شود و مستقیماً از مرورگر شما به سرورهای OpenAI ارسال می‌شود.
-این پروژه هیچ بک‌اند یا سروری ندارد و اطلاعات شما به هیچ جای دیگری فرستاده نمی‌شود.
+Single-page OpenAI chat (streaming) + image generation — runs entirely in the browser.
 
-⚠️ چون کلید مستقیم در مرورگر استفاده می‌شود، اگر می‌خواهید این را برای دیگران هم به‌اشتراک بگذارید (مثلاً روی یک وب‌سایت عمومی)،
-بهتر است یک بک‌اند واسط بسازید تا کلید شما لو نرود. برای استفاده‌ی شخصی روی سیستم خودتان، مشکلی نیست.
+---
 
-## ساختار پروژه
+## English
+
+
+
+### Features
+
+- Streaming text chat (ChatGPT-style)
+- Image generation mode (DALL·E / gpt-image)
+- File uploads (text + vision images)
+- Multiple conversations with history in `localStorage`
+- Configurable model, image model, and system prompt
+- JSON export / import backup
+
+### Stack
+
+HTML · CSS · JavaScript · OpenAI API
+
+### Getting started
+
+```bash
+git clone https://github.com/yasinfallahati/chat-bot.git
+cd chat-bot/gpt-chat
+python3 -m http.server 8000
+# open http://localhost:8000 — set your API key in Settings
 ```
-gpt-chat/
-├── index.html   ساختار صفحه
-├── style.css    استایل و تم تیره
-├── app.js       منطق برنامه (اتصال به API، ذخیره‌سازی، فایل، تصویر)
-└── README.md    همین فایل
+**Security:** API key stays in your browser `localStorage` and is sent only to OpenAI. Do not host this publicly with your personal key.
+
+---
+
+## فارسی
+
+### چت‌بات
+
+چت استریم OpenAI + تولید تصویر — کاملاً در مرورگر، بدون بک‌اند.
+
+
+
+### امکانات
+
+- گفتگوی متنی با استریم پاسخ
+- حالت تولید تصویر
+- آپلود فایل متنی و تصویر vision
+- چند گفتگو با تاریخچه در `localStorage`
+- تنظیم مدل، مدل تصویر و System Prompt
+- پشتیبان‌گیری Export/Import به JSON
+
+### تکنولوژی‌ها
+
+HTML · CSS · JavaScript · OpenAI API
+
+### شروع کار
+
+```bash
+git clone https://github.com/yasinfallahati/chat-bot.git
+cd chat-bot/gpt-chat
+python3 -m http.server 8000
 ```
+کلید API فقط در `localStorage` مرورگر شماست. برای انتشار عمومی، بک‌اند واسط بسازید.
 
-## توسعه‌ی بیشتر (پیشنهادی)
-- افزودن پشتیبانی از خواندن PDF با یک کتابخانه‌ی جاوااسکریپت (مثل pdf.js)
-- افزودن جستجو در گفتگوهای قبلی
-- افزودن پشتیبانی از چند زبانی رابط کاربری
+---
 
-موفق باشید! 🚀
+`#openai` `#chatgpt` `#javascript` `#browser` `#dalle` `#chatbot`
