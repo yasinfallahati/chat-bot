@@ -1,50 +1,48 @@
-<p align="center"><img src="assets/hero.png" width="100%" alt="Chat Bot"></p>
+# چت‌بات هوشمند (متصل به OpenAI API)
 
-# Chat Bot — browser OpenAI desk
+یک چت‌بات کامل، تک‌فایلی و بدون نیاز به نصب که مستقیم داخل مرورگر اجرا می‌شود و از API خودِ OpenAI استفاده می‌کند.
 
-<p align="center">
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
-<img src="https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white">
-<img src="https://img.shields.io/badge/Streaming-10B981?style=for-the-badge">
-<img src="https://img.shields.io/badge/DALL·E-0F172A?style=for-the-badge">
-</p>
+## قابلیت‌ها
+- 💬 گفتگوی متنی با استریم پاسخ (مثل ChatGPT)
+- 🖼️ تولید تصویر با DALL·E / gpt-image (حالت "تولید تصویر" در بالای صفحه)
+- 📎 آپلود فایل (متنی: txt/md/json/csv/js/py/... و تصویر برای مدل‌های vision)
+- 🗂️ چند گفتگوی جداگانه با تاریخچه (مثل سایدبار ChatGPT)
+- 🧠 حافظه/تاریخچه کامل: همه‌چیز در `localStorage` مرورگر شما ذخیره می‌شود و بعد از بستن مرورگر هم می‌ماند
+- ⚙️ تنظیم آزادانه‌ی مدل گفتگو، مدل تصویر، و System Prompt
+- 💾 خروجی/ورودی پشتیبان (Export/Import) به‌صورت فایل JSON
 
-<p align="center"><img src="assets/screenshot.png" width="100%" alt="Chat UI screenshot"></p>
+## نحوه‌ی استفاده
+1. فایل‌ها را از حالت زیپ خارج کنید.
+2. فایل `index.html` را با یک مرورگر مدرن (Chrome / Edge / Firefox) باز کنید.
+   - می‌توانید مستقیم دابل‌کلیک کنید، یا برای جلوگیری از هر مشکل احتمالی مرورگر، با یک سرور محلی ساده اجرا کنید:
+     ```
+     cd gpt-chat
+     python3 -m http.server 8000
+     ```
+     و بعد آدرس `http://localhost:8000` را باز کنید.
+3. روی دکمه‌ی «⚙️ تنظیمات API» بزنید و کلید API خودتان (`sk-...`) را وارد کنید.
+4. نام مدل مورد نظر را وارد کنید (مثلاً `gpt-4o-mini` برای گفتگو و `dall-e-3` برای تصویر).
+5. ذخیره کنید و شروع به چت کنید!
 
-**No Node server required for the UI.** Drop `gpt-chat/` behind any static host (or `python -m http.server`), paste your API key in Settings, and you get streaming chat + image mode with conversation history in `localStorage`.
+## نکته‌ی امنیتی مهم
+کلید API شما فقط داخل مرورگر خودتان (`localStorage`) ذخیره می‌شود و مستقیماً از مرورگر شما به سرورهای OpenAI ارسال می‌شود.
+این پروژه هیچ بک‌اند یا سروری ندارد و اطلاعات شما به هیچ جای دیگری فرستاده نمی‌شود.
 
-## Quick start
+⚠️ چون کلید مستقیم در مرورگر استفاده می‌شود، اگر می‌خواهید این را برای دیگران هم به‌اشتراک بگذارید (مثلاً روی یک وب‌سایت عمومی)،
+بهتر است یک بک‌اند واسط بسازید تا کلید شما لو نرود. برای استفاده‌ی شخصی روی سیستم خودتان، مشکلی نیست.
 
-```bash
-cd gpt-chat
-python3 -m http.server 8000
-# open http://localhost:8000 — set API key in Settings
+## ساختار پروژه
+```
+gpt-chat/
+├── index.html   ساختار صفحه
+├── style.css    استایل و تم تیره
+├── app.js       منطق برنامه (اتصال به API، ذخیره‌سازی، فایل، تصویر)
+└── README.md    همین فایل
 ```
 
-## Product surface
+## توسعه‌ی بیشتر (پیشنهادی)
+- افزودن پشتیبانی از خواندن PDF با یک کتابخانه‌ی جاوااسکریپت (مثل pdf.js)
+- افزودن جستجو در گفتگوهای قبلی
+- افزودن پشتیبانی از چند زبانی رابط کاربری
 
-| Control | Role |
-|---------|------|
-| Sidebar | Conversation list, new chat, backup import/export |
-| Mode select | `گفتگو` (chat) · `تولید تصویر` (image) |
-| Settings | API key + endpoint knobs (stay local to the browser) |
-
-Persian-first chrome (`dir=rtl`). Prefer this repo over the empty **chat-bot-** archive.
-
----
-
-## فارسی — چت‌بات مرورگری
-
-رابط تک‌صفحه‌ای برای **گفتگوی استریم OpenAI** و **تولید تصویر**؛ تاریخچه در `localStorage`، پشتیبان JSON، و تنظیمات API داخل خود مرورگر. بدون بک‌اند اختصاصی برای UI.
-
-### شروع سریع
-
-```bash
-cd gpt-chat && python3 -m http.server 8000
-```
-
-سپس کلید API را از منوی تنظیمات وارد کنید.
-
-### تفاوت با chat-bot-
-
-ریپوی `chat-bot-` فقط اسکلت قدیمی است؛ **اینجا** UI کامل مرورگر قرار دارد.
+موفق باشید! 🚀
